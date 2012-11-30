@@ -45,3 +45,15 @@ List of some commands according to the ``.vimrc`` present
     * step up : ``up``
     * help : ``?``
 
+
+
+TMUX Configurations
+===================
+
+Ctrl+a c             # create a new window
+Ctrl+a ,             # name the window (test, vim, console, log, etc.)
+Ctrl+a "             # split pane horizontally
+Ctrl+a %             # split pane vertically
+Ctrl+a j (or k)      # move up or down a pane
+Ctrl+a h (or l)      # move left or right a pane
+Ctrl+a x             # kill a pane or window
