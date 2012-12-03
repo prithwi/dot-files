@@ -68,9 +68,9 @@ Ctrl+a Alt+<left>    # Resize Windows left/right/etc
 
 Session management
 -------------------
-attach (or a) # attaches a session
-detach (or d) # detaches a session
-kill-session -t <session id>
-rename-session -t <old> <new>
+attach (or a) # attaches a session 
+detach (or d) # detaches a session 
+kill-session -t <session id> 
+rename-session -t <old> <new> 
 
 
