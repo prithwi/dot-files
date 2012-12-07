@@ -131,6 +131,8 @@ map <c-h> <c-w>h
 " resize windows
 map + <c-w>+
 map - <c-w>-
+map < <c-w><
+map > <c-w>>
 
 map <f6> <c-w>w
 
