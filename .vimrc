@@ -26,7 +26,10 @@ set noswapfile
 
 
 " make yank copy to the global system clipboard
-set clipboard=unnamed
+set clipboard=unnamedplus
+
+" enamble mouse
+set mouse=a
 
 
 " select all
@@ -153,4 +156,20 @@ map <Leader>x :%s/\s\+$//
 set t_Co=256
 
 set colorcolumn=80
+highlight ColorColumn cterm=NONE ctermbg=0 ctermfg=5
 
+set cursorcolumn
+" keeping cursor column only for the current window
+augroup CursorColumn
+  au!
+  au VimEnter,WinEnter,BufWinEnter * setlocal cursorcolumn
+  au WinLeave * setlocal nocursorcolumn
+augroup END
+highlight CursorColumn cterm=None ctermbg=4 ctermfg=5
+
+" ==========
+" TODO
+" ==========
+" 1. Soell check ( for python only strings and comments"
+" 2. Language check
+" 3. Latex mode
