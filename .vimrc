@@ -28,7 +28,7 @@ set noswapfile
 " make yank copy to the global system clipboard
 set clipboard=unnamedplus
 
-" enamble mouse
+" enable mouse
 set mouse=a
 
 
@@ -167,9 +167,13 @@ augroup CursorColumn
 augroup END
 highlight CursorColumn cterm=None ctermbg=4 ctermfg=5
 
+" General spell Check
+" ====================
+hi SpellBad cterm=underline ctermbg=6 ctermfg=2 gui=undercurl guisp=Red
+
 " ==========
 " TODO
 " ==========
-" 1. Soell check ( for python only strings and comments"
+" 1. Spell check ( for python only strings and comments"
 " 2. Language check
 " 3. Latex mode
