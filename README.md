@@ -49,20 +49,20 @@ List of some commands according to the ``.vimrc`` present
 
 TMUX Configurations
 ===================
-Prefix key is ``Ctrl+a``  
+Prefix key is ``\```  
     
-    Ctrl+a c             # create a new window  
-    Ctrl+a ,             # name the window (test, vim, console, log, etc.)  
-    Ctrl+a "             # split pane horizontally  
-    Ctrl+a %             # split pane vertically  
-    Ctrl+a j (or k)      # move up or down a pane  
-    Ctrl+a h (or l)      # move left or right a pane  
-    Ctrl+a x             # kill a pane or window  
-    Ctrl+a <number>      # move to window <number>  
-    Ctrl+a n (or p)      # move to next (or previous) window  
-    Ctrl+a l             # move to previously selected window  
-    Ctrl+a f             # find window by name  
-    Ctrl+a Alt+<left>    # Resize Windows left/right/etc. 
+    ` c             # create a new window  
+    ` ,             # name the window (test, vim, console, log, etc.)  
+    ` "             # split pane horizontally  
+    ` %             # split pane vertically  
+    ` j (or k)      # move up or down a pane  
+    ` h (or l)      # move left or right a pane  
+    ` x             # kill a pane or window  
+    ` <number>      # move to window <number>  
+    ` n (or p)      # move to next (or previous) window  
+    ` l             # move to previously selected window  
+    ` f             # find window by name  
+    ` Alt+<left>    # Resize Windows left/right/etc. 
 
 Session management
 -------------------
