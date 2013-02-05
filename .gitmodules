@@ -10,3 +10,6 @@
 [submodule ".vim/bundle/ctrlp.vim"]
 	path = .vim/bundle/ctrlp.vim
 	url = git://github.com/kien/ctrlp.vim
+[submodule ".vim/bundle/sort-python-imports"]
+	path = .vim/bundle/sort-python-imports
+	url = git://github.com/vim-scripts/sort-python-imports.git

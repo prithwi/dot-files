@@ -45,6 +45,8 @@ List of some commands according to the ``.vimrc`` present
     * step up : ``up``
     * help : ``?``
 
+* Sorting Imports :  Visual mode selction and ``<Ctrl>i``
+
 
 
 TMUX Configurations
