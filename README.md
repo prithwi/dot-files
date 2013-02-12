@@ -1,4 +1,4 @@
-VIM Python IDE
+VIM IDE
 ===============
 
 Install the plugins by running the following commands in the root of the
@@ -6,6 +6,23 @@ repository :
 
 1. ``git sudmodule init``
 2. ``git submodule update`` 
+
+Recommended Dependencies
+------------------------
+
+1. ``exuberant-ctags``: For tag-view with IDE.
+2. ``rubber`` : For better compilation for Latex.
+
+Gneral IDE Requirements
+------------------------
+
+1. View file structure :
+   Uses NerdTree. Enable/Disable tree : ``<C-t>``
+
+2. File search : ``<Ctrl>p``
+
+3. Programming Tag views : ``<C-v>``
+
 
 Python mode configurations
 --------------------------
@@ -26,8 +43,6 @@ Cheat Sheet
 List of some commands according to the ``.vimrc`` present
 
 * Code Completion: ``<Ctrl><space>``
-
-* File search : ``<Ctrl>n``
 
 * Folding code:
 
@@ -73,4 +88,34 @@ Session management
     kill-session -t <session id>
     rename-session -t <old> <new>
 
+Latex Configurations
+====================
+``<LocalLeader> = `;`
+Specify master file for each subfile : use modeline
+
+      ``% mainfile: MASTER FILE``
+
+1. Insert mode:
+---------------
+
+        <LocalLeader><LocalLeader>          <LocalLeader>
+        <LocalLeader>K                      Dictionary completion
+        <LocalLeader>M                      Maths completion 
+        <LocalLeader>C                      Insert a citation
+        <LocalLeader>B                      Insert an environment
+        <LocalLeader>R                      Insert a reference
+
+2. Normal Mode: 
+---------------
+        <F1>                                Insert a template file
+        <C-F>                               Jump to next \\(begin|end)
+        <C-B>                               Jump to previous \\(begin|end)
+        gd                                  Goto label's declaration
+        gb                                  Goto citekey's declaration
+        <LocalLeader>k                      Small compile
+        <LocalLeader>K                      Big compile
+        <LocalLeader>V                      View the document
+        <C-LeftMouse>                       SyncTeX: Forward search
+        <LocalLeader>Q                      View the quickfix window
+        <LocalLeader>U                      Update the BibTeX database(s)
 

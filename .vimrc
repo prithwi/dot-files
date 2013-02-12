@@ -179,3 +179,19 @@ hi SpellBad cterm=underline ctermbg=6 ctermfg=2 gui=undercurl guisp=Red
 " 1. Spell check ( for python only strings and comments"
 " 2. Language check
 " 3. Latex mode
+
+
+" ======================
+" MISC IDE requirements"
+" ======================
+" File Structure View
+map <C-t> :NERDTreeToggle<CR>
+" Programming tags
+map <C-v> :TagbarToggle<CR>
+
+" Latex Mode
+" ==========
+set modeline
+let g:tex_fold_enabled = 1
+let g:tex_comment_nospell = 1
+let g:tex_flavor = "latex"
