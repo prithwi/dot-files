@@ -93,7 +93,10 @@ Latex Configurations
 ``<LocalLeader> = `;`
 Specify master file for each subfile : use modeline
 
-      ``% mainfile: MASTER FILE``
+      ``% mainfile: "MASTER_FILE"``
+
+By default uses pdflatex. To use latex/rubber set g:tex_flavor =
+"latex"/"rubber"
 
 1. Insert mode:
 ---------------
