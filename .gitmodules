@@ -13,9 +13,6 @@
 [submodule ".vim/bundle/sort-python-imports"]
 	path = .vim/bundle/sort-python-imports
 	url = git://github.com/vim-scripts/sort-python-imports.git
-[submodule ".vim/bundle/vim-autoclose"]
-	path = .vim/bundle/vim-autoclose
-	url = git://github.com/Townk/vim-autoclose
 [submodule ".vim/bundle/nerdtree"]
 	path = .vim/bundle/nerdtree
 	url = git://github.com/scrooloose/nerdtree.git

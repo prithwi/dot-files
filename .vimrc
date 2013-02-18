@@ -194,5 +194,5 @@ map <C-v> :TagbarToggle<CR>
 set modeline
 let g:tex_fold_enabled = 1
 let g:tex_comment_nospell = 1
-let g:tex_flavor = "pdflatex"
+let g:tex_flavor = "pdflatex --shell-escape"
 "compiler tex
