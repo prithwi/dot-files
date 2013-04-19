@@ -167,7 +167,7 @@ augroup CursorColumn
   au VimEnter,WinEnter,BufWinEnter * setlocal cursorcolumn
   au WinLeave * setlocal nocursorcolumn
 augroup END
-highlight CursorColumn cterm=None ctermbg=4 ctermfg=5
+highlight CursorColumn cterm=None ctermbg=0 ctermfg=5
 
 " General spell Check
 " ====================
