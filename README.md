@@ -62,6 +62,13 @@ List of some commands according to the ``.vimrc`` present
 
 * Sorting Imports :  Visual mode selction and ``<Ctrl>i``
 
+* IPython notebook mode:
+
+    * Start Ipython : ``ipython console'``
+    * From vim : ``:IPython``
+    * Run full file : ``F5``
+    * Run selection : ``F9``
+
 
 
 TMUX Configurations

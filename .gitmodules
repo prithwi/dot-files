@@ -22,3 +22,6 @@
 [submodule ".vim/bundle/tex-9"]
 	path = .vim/bundle/tex-9
 	url = git://github.com/vim-scripts/TeX-9.git
+[submodule ".vim/bundle/vim-ipython"]
+	path = .vim/bundle/vim-ipython
+	url = git://github.com/ivanov/vim-ipython.git
