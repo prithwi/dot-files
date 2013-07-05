@@ -20,9 +20,9 @@ set wildignore+=*/coverage/*
 
 " Disable stupid backup and swap files - they trigger too many events
 " for file system watchers
-set nobackup
-set nowritebackup
-set noswapfile
+"set nobackup
+"set nowritebackup
+"set noswapfile
 
 
 " make yank copy to the global system clipboard
@@ -76,8 +76,8 @@ inoremap <c-n> :nohl <cr>
 vnoremap <c-n> :nohl <cr>
 
 set nowrap " don't automatically wrap on load
-set tw=79  " width of document (used by gd)
-set fo-=t  " don't automatically wrap text when typing
+set tw=0  " width of document (used by gd)
+"set fo-=t  " don't automatically wrap text when typing
 set number " show line numbers
 
 
@@ -157,17 +157,17 @@ map <Leader>x :%s/\s\+$//
 " =============
 set t_Co=256
 
-set colorcolumn=80
-highlight ColorColumn cterm=NONE ctermbg=0 ctermfg=5
+"set colorcolumn=80
+"highlight ColorColumn cterm=NONE ctermbg=0 ctermfg=5
 
-set cursorcolumn
-" keeping cursor column only for the current window
-augroup CursorColumn
-  au!
-  au VimEnter,WinEnter,BufWinEnter * setlocal cursorcolumn
-  au WinLeave * setlocal nocursorcolumn
-augroup END
-highlight CursorColumn cterm=None ctermbg=0 ctermfg=5
+"set cursorcolumn
+"" keeping cursor column only for the current window
+"augroup CursorColumn
+  "au!
+  "au VimEnter,WinEnter,BufWinEnter * setlocal cursorcolumn
+  "au WinLeave * setlocal nocursorcolumn
+"augroup END
+"highlight CursorColumn cterm=None ctermbg=0 ctermfg=5
 
 " General spell Check
 " ====================
@@ -196,3 +196,24 @@ let g:tex_fold_enabled = 1
 let g:tex_comment_nospell = 1
 let g:tex_flavor = "pdflatex --shell-escape"
 "compiler tex
+
+"set backspace ON in insert-mode
+set backspace=indent,eol,start
+
+
+" Start code to install vimorganizer, copied from VimOrganizer/_vimrc file
+let g:ft_ignore_pat = '\.org'
+filetype plugin indent on
+" and then put these lines in vimrc somewhere after the line above
+au! BufRead,BufWrite,BufWritePost,BufNewFile *.org 
+au BufEnter *.org            call org#SetOrgFileType()
+" let g:org_capture_file = '~/org_files/mycaptures.org'
+command! OrgCapture :call org#CaptureBuffer()
+command! OrgCaptureFile :call org#OpenCaptureFile()
+syntax on
+
+"make sure that you have installed latest emacs23 or already have that in your O/S
+let g:org_command_for_emacsclient = 'emacs23'
+
+" end code for VimOrganizer
+
