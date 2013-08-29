@@ -86,6 +86,8 @@ set number " show line numbers
 vmap Q gq
 nmap Q gqap
 
+hi Search ctermbg=10
+hi SpellBad ctermbg=red
 
 
 " settings for commenting in python
@@ -107,6 +109,8 @@ map <Leader>b Oimport ipdb; ipdb.set_trace()  # BREAKPOINT<C-c>
 " settings for jedi-vim
 " =========================
 let g:jedi#use_tabs_not_buffers = 0
+let g:jedi#popup_on_dot = 0
+let g:jedi#show_call_signature = 0
 
 
 " Settings for vim-powerline
@@ -201,3 +205,4 @@ let g:tex_fold_enabled = 1
 let g:tex_comment_nospell = 1
 let g:tex_flavor = "pdflatex --shell-escape"
 "compiler tex
+au FileType tex setl tw=0
