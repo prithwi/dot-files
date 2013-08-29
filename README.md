@@ -44,6 +44,15 @@ List of some commands according to the ``.vimrc`` present
 
 * Code Completion: ``<Ctrl><space>``
 
+    * Completion ``<C-Space>``
+    * Goto assignments ``<leader>g`` (typical goto function)
+    * Goto definitions ``<leader>d`` (follow identifier as far as possible,
+    includes imports and statements)
+    * Show Documentation/Pydoc ``K`` (shows a popup with assignments)
+    * Renaming ``<leader>r``
+    * Usages ``<leader>n`` (shows all the usages of a name)
+    * Open module, e.g. ``:Pyimport os`` (opens the ``os`` module)
+
 * Folding code:
 
     * Only one block: ``,f``
@@ -61,6 +70,15 @@ List of some commands according to the ``.vimrc`` present
     * help : ``?``
 
 * Sorting Imports :  Visual mode selction and ``<Ctrl>i``
+
+* Enabling multi-cursor : 
+
+    * ``<Ctrl>-n`` to highlight current word, and repeat to select other
+      occurences. (Normal mode)
+    * ``<Ctrl>-p`` removes current virtual cursor, moves to previous.  (Visual
+      mode).
+    * ``<Ctrl>-x`` removes current virtual cursor and skip to next (Visual
+      mode).
 
 
 

@@ -40,18 +40,18 @@ set completeopt=longest,menuone
 
 
 " found here: http://stackoverflow.com/a/2170800/70778
-function! OmniPopup(action)
-    if pumvisible()
-        if a:action == 'j'
-            return "\<C-N>"
-        elseif a:action == 'k'
-            return "\<C-P>"
-        endif
-    endif
-    return a:action
-endfunction
-inoremap <silent><C-j> <C-R>=OmniPopup('j')<CR>
-inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
+"function! OmniPopup(action)
+    "if pumvisible()
+        "if a:action == 'j'
+            "return \<C-N>"
+        "elseif a:action == 'k'
+            "return \<C-P>" put " before \
+        "endif
+    "endif
+    "return a:action
+"endfunction
+"inoremap <silent><C-j> <C-R>=OmniPopup('j')<CR>
+"inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
 
 set history=700
 set undolevels=700
@@ -63,7 +63,7 @@ set shiftwidth=4
 set shiftround
 set expandtab
 " disable formatting when pasting large chunks of code
-set pastetoggle=<F2>
+"set pastetoggle=<F2>
 
 set hlsearch
 set incsearch
@@ -71,9 +71,10 @@ set ignorecase
 set smartcase
 
 " shortcut key to disable highlighting
-nnoremap <c-n> :nohl <cr>
-inoremap <c-n> :nohl <cr>
-vnoremap <c-n> :nohl <cr>
+"nnoremap <c-n> :nohl <cr>
+"inoremap <c-n> :nohl <cr>
+"vnoremap <c-n> :nohl <cr>
+
 
 set nowrap " don't automatically wrap on load
 set tw=79  " width of document (used by gd)
@@ -93,15 +94,19 @@ nmap Q gqap
 
 " settings for python-mode
 " =========================
-map <Leader>g :call RopeGotoDefinition()<CR>
-let ropevim_enable_shortcuts = 1
-let g:pymode_rope_goto_def_newwin = "vnew"
-let g:pymode_rope_extended_complete = 1
+"map <Leader>g :call RopeGotoDefinition()<CR>
+"let ropevim_enable_shortcuts = 1
+"let g:pymode_rope_goto_def_newwin = \"vnew"
+"let g:pymode_rope_extended_complete = 1
 let g:pymode_breakpoint = 0
 let g:pymode_syntax = 1
 let g:pymode_syntax_builtin_objs = 0
 let g:pymode_syntax_builtin_funcs = 0
-map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
+map <Leader>b Oimport ipdb; ipdb.set_trace()  # BREAKPOINT<C-c>
+
+" settings for jedi-vim
+" =========================
+let g:jedi#use_tabs_not_buffers = 0
 
 
 " Settings for vim-powerline
@@ -185,7 +190,7 @@ hi SpellBad cterm=underline ctermbg=6 ctermfg=2 gui=undercurl guisp=Red
 " MISC IDE requirements"
 " ======================
 " File Structure View
-map <C-t> :NERDTreeToggle<CR>
+map <C-t> :NERDTreeTabsToggle<CR>
 " Programming tags
 map <C-v> :TagbarToggle<CR>
 
