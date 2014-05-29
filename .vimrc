@@ -1,141 +1,77 @@
 set encoding=utf-8
 autocmd! bufwritepost .vimrc source %
-call pathogen#infect()
 
-filetype plugin on
-filetype plugin indent on
+
+" ===========================
+"    Packages : Vundle Setup
+" ===========================
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#begin()
+
+" Let Vundle manage Vundle
+Plugin 'gmarik/vundle'
+
+" Other vundles
+" -------------
+" Readability
+Plugin 'godlygeek/tabular'                 " Alginment: improves readability
+Plugin 'nathanaelkane/vim-indent-guides'   " Indent guides: helpful for python
+Plugin 'altercation/vim-colors-solarized'  " for color scheme
+Plugin 'Lokaltog/vim-powerline'            " for Powerline
+Plugin 'randymorris/vim-bufstat'           " Persistent Buffer
+
+Plugin 'ervandew/supertab'                 " For autocomplete
+Plugin 'scrooloose/syntastic'              " for syntax checking
+Plugin 'taglist.vim'                           " source code browser
+
+Plugin 'scrooloose/nerdcommenter'          " for commenting
+
+Plugin 'tpope/vim-fugitive'                " for git
+
+" **Python Specific**
+" Python syntax check: pip install flake8
+Plugin 'davidhalter/jedi-vim'              " Autocomplete and goto
+Plugin 'kien/ctrlp.vim'                    " Fuzzy Buffer search
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+
+Plugin 'Tex-9'                             " Latex
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" ------------------------------------------------------------------------
+
+" General options
+" ===============
 syntax on
 
-
-" general option
-" ===============
-let mapleader = "," " rebind <leader> key
-set wildmode=list:longest " make tab behave like in a shell
-set autoread " reload file when changes happen in other editors
-
-set wildignore+=*.pyc
-set wildignore+=*_build/*
-set wildignore+=*/coverage/*
-
-
-" Disable stupid backup and swap files - they trigger too many events
-" for file system watchers
+set modeline
 set nobackup
 set nowritebackup
 set noswapfile
 
+set nu
+set ruler
 
-" make yank copy to the global system clipboard
+set smartcase
+set incsearch
+set hlsearch
+
+set smartindent
+set autoindent
+
+set mouse=a
 set clipboard=unnamedplus
 
-" enable mouse
-set mouse=a
-
-
-" select all
-nnoremap <leader>a : ggvg <cr>
-
-" Improving code completion
-set completeopt=longest,menuone
-
-
-" found here: http://stackoverflow.com/a/2170800/70778
-"function! OmniPopup(action)
-    "if pumvisible()
-        "if a:action == 'j'
-            "return \<C-N>"
-        "elseif a:action == 'k'
-            "return \<C-P>" put " before \
-        "endif
-    "endif
-    "return a:action
-"endfunction
-"inoremap <silent><C-j> <C-R>=OmniPopup('j')<CR>
-"inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
-
-set history=700
-set undolevels=700
-
-
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set shiftround
-set expandtab
-" disable formatting when pasting large chunks of code
-"set pastetoggle=<F2>
-
-set hlsearch
-set incsearch
-set ignorecase
-set smartcase
-
-" shortcut key to disable highlighting
-"nnoremap <c-n> :nohl <cr>
-"inoremap <c-n> :nohl <cr>
-"vnoremap <c-n> :nohl <cr>
-
-
-set nowrap " don't automatically wrap on load
-set tw=79  " width of document (used by gd)
-set fo-=t  " don't automatically wrap text when typing
-set number " show line numbers
-
-
-" easier formatting of paragraphs
-vmap Q gq
-nmap Q gqap
-
-hi Search ctermbg=10
-hi SpellBad ctermbg=red
-
-
-" settings for commenting in python
-" ==================================
-" using nercommentor
-
-" settings for python-mode
-" =========================
-"map <Leader>g :call RopeGotoDefinition()<CR>
-"let ropevim_enable_shortcuts = 1
-"let g:pymode_rope_goto_def_newwin = \"vnew"
-"let g:pymode_rope_extended_complete = 1
-let g:pymode_breakpoint = 0
-let g:pymode_syntax = 1
-let g:pymode_syntax_builtin_objs = 0
-let g:pymode_syntax_builtin_funcs = 0
-map <Leader>b Oimport ipdb; ipdb.set_trace()  # BREAKPOINT<C-c>
-
-" settings for jedi-vim
-" =========================
-let g:jedi#use_tabs_not_buffers = 0
-let g:jedi#popup_on_dot = 0
-let g:jedi#show_call_signature = 0
-
-
-" Settings for vim-powerline
-" ===========================
-set laststatus=2
-" let g:Powerline_symbols = 'fancy'
-
-" Settings for vim-markdown
-" ==========================
-set nofoldenable
-
-
-" Settings for ctrlp
-" ===================
-let g:ctrlp_max_height = 30
-
 " Movement
-" =========
-" bind Ctrl+<movement> keys to move around the windows, instead of using ctrl+w
-" + <movement>
 map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
-
 
 " resize windows
 map + <c-w>+
@@ -145,64 +81,101 @@ map > <c-w>>
 
 map <f6> <c-w>w
 
-map <leader>n <esc>:tabprevious<cr>
-map <leader>m <esc>:tabnext<cr>
-vnoremap <leader>s :sort<cr>
-
-" custom mappings
-" ================
-vnoremap < <gv  " better indentation
-vnoremap > >gv  " better indentation
+" Selections
 map <Leader>a ggVG  " select all
 
+" Formatting specifications
+" ===============================
+set nowrap " don't automatically wrap on load
+set tw=79  " width of document (used by gd)
+set fo-=t  " don't automatically wrap text when typing
+set expandtab
+set shiftwidth=4
+set tabstop=4
 
 " show trailing whitespace
-" =========================
 highlight ExtraWhitespace ctermbg=red guibg=red
 autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
-map <Leader>x :%s/\s\+$//
+map <Leader>x :%s/\s\+$
 
 " Color scheme
-" =============
 set t_Co=256
-
+hi Search ctermbg=10
+hi SpellBad ctermbg=red
 set colorcolumn=80
 highlight ColorColumn cterm=NONE ctermbg=0 ctermfg=5
 
-set cursorcolumn
-" keeping cursor column only for the current window
-augroup CursorColumn
-  au!
-  au VimEnter,WinEnter,BufWinEnter * setlocal cursorcolumn
-  au WinLeave * setlocal nocursorcolumn
-augroup END
-highlight CursorColumn cterm=None ctermbg=0 ctermfg=5
 
-" General spell Check
-" ====================
-hi SpellBad cterm=underline ctermbg=6 ctermfg=2 gui=undercurl guisp=Red
+let mapleader = "," " rebind <leader> key
 
-" ==========
-" TODO
-" ==========
-" 1. Spell check ( for python only strings and comments"
-" 2. Language check
-" 3. Latex mode
+" Markdown using inbuilt vim markdown
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
+" Other Misc.
+set hidden                            " buffer control
+set nostartofline                     " Avoid moving cursor to BOL when jumping around
+set virtualedit=block                 " Let cursor move past the last char in <C-v> mode
+set scrolloff=3                       " Keep 3 context lines above and below the cursor
+set omnifunc=syntaxcomplete#Complete  " Using omnifunc to search
+autocmd BufEnter * silent! lcd %:p:h  " Vim always in the directory of the buffer
+"" code folding
+"set foldmethod=indent
+"set foldlevel=2
+"set foldnestmax=4
+
+" --------------------------------------------------------------------------
+
+" ================================================
+"          Configurations for Vundle Modules
+" ================================================
+
+" Solarizer : color configuration
+set background=dark
+colorscheme solarized
 
 
-" ======================
-" MISC IDE requirements"
-" ======================
-" File Structure View
+    
+
+" Syntastic
+let g:syntastic_check_on_open=1
+let g:syntastic_enable_highlighting = 1
+let g:syntastic_quiet_messages = {'level': 'warnings'}
+
+" Supertab
+let g:SuperTabDefaultCompletionType = "context"
+set completeopt=menuone,longest,preview
+
+" Vim Indent guide: <leader>ig
+let g:indent_guides_start_level=2
+let g:indent_guides_guide_size=1
+
+" Python
+" Jedi vim specific
+let g:jedi#popup_on_dot = 0
+let g:jedi#auto_initialization = 1
+let g:jedi#show_call_signature = 0
+" Other python commands
+map <Leader>b Oimport ipdb; ipdb.set_trace()  # BREAKPOINT<C-c>
+
+
+" NerdTreeTabs
 map <C-t> :NERDTreeTabsToggle<CR>
-" Programming tags
-map <C-v> :TagbarToggle<CR>
 
-" Latex Mode
-" ==========
-set modeline
+
+" Tex9 Latex Mode
 let g:tex_fold_enabled = 1
 let g:tex_comment_nospell = 1
 let g:tex_flavor = "pdflatex --shell-escape"
-"compiler tex
 au FileType tex setl tw=0
+
+" Powerline 
+set laststatus=2
+" ==============================================================
+"         Recipes lifted from pabulter@vt.edu
+" ==============================================================
+" chaining supertab with ommnifunc
+"autocmd FileType *
+"\ if &omnifunc != '' |
+"\   call SuperTabChain(&omnifunc, "<c-p>") |
+"\   call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
+"\ endif
