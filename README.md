@@ -6,12 +6,13 @@ repository :
 
 1. ``git sudmodule init``
 2. ``git submodule update`` 
+3. within vim ``:PluginInstall``
 
 Recommended Dependencies
 ------------------------
 
 1. ``exuberant-ctags``: For tag-view with IDE.
-2. ``rubber`` : For better compilation for Latex.
+2. ``pip install flake8`` : for python code check.
 
 Gneral IDE Requirements
 ------------------------
@@ -21,7 +22,6 @@ Gneral IDE Requirements
 
 2. File search : ``<Ctrl>p``
 
-3. Programming Tag views : ``<C-v>``
 
 
 Python mode configurations
@@ -42,7 +42,7 @@ Cheat Sheet
 
 List of some commands according to the ``.vimrc`` present
 
-* Code Completion: ``<Ctrl><space>``
+* Code Completion: ``<Ctrl><space>`` or ``<TAB>`` (via SuperTab)
 
     * Completion ``<C-Space>``
     * Goto assignments ``<leader>g`` (typical goto function)
@@ -69,16 +69,6 @@ List of some commands according to the ``.vimrc`` present
     * step up : ``up``
     * help : ``?``
 
-* Sorting Imports :  Visual mode selction and ``<Ctrl>i``
-
-* Enabling multi-cursor : 
-
-    * ``<Ctrl>-n`` to highlight current word, and repeat to select other
-      occurences. (Normal mode)
-    * ``<Ctrl>-p`` removes current virtual cursor, moves to previous.  (Visual
-      mode).
-    * ``<Ctrl>-x`` removes current virtual cursor and skip to next (Visual
-      mode).
 
 
 
