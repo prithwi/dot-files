@@ -25,7 +25,14 @@ Plugin 'randymorris/vim-bufstat'           " Persistent Buffer
 
 Plugin 'ervandew/supertab'                 " For autocomplete
 Plugin 'scrooloose/syntastic'              " for syntax checking
-Plugin 'taglist.vim'                           " source code browser
+Plugin 'majutsushi/tagbar'                 " source code browser
+
+Plugin 'SirVer/ultisnips'                  " Snippets 
+Plugin 'honza/vim-snippets'                " Snippets collection
+
+Plugin 'kien/ctrlp.vim'                    " Fuzzy Buffer search
+Plugin 'scrooloose/nerdtree'               " Tree view
+Plugin 'jistr/vim-nerdtree-tabs'           " Persistent across tabs
 
 Plugin 'scrooloose/nerdcommenter'          " for commenting
 
@@ -34,9 +41,6 @@ Plugin 'tpope/vim-fugitive'                " for git
 " **Python Specific**
 " Python syntax check: pip install flake8
 Plugin 'davidhalter/jedi-vim'              " Autocomplete and goto
-Plugin 'kien/ctrlp.vim'                    " Fuzzy Buffer search
-Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
 
 Plugin 'Tex-9'                             " Latex
 
@@ -74,10 +78,10 @@ map <c-l> <c-w>l
 map <c-h> <c-w>h
 
 " resize windows
-map + <c-w>+
-map - <c-w>-
-map < <c-w><
-map > <c-w>>
+"map + <c-w>+
+"map - <c-w>-
+"map < <c-w><
+"map > <c-w>>
 
 map <f6> <c-w>w
 
@@ -133,9 +137,6 @@ autocmd BufEnter * silent! lcd %:p:h  " Vim always in the directory of the buffe
 set background=dark
 colorscheme solarized
 
-
-    
-
 " Syntastic
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_highlighting = 1
@@ -145,9 +146,23 @@ let g:syntastic_quiet_messages = {'level': 'warnings'}
 let g:SuperTabDefaultCompletionType = "context"
 set completeopt=menuone,longest,preview
 
+" Ultisnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsListSnippets="<s-tab>"
+let g:UltiSnipsJumpForwardTrigger="<s-j>"
+let g:UltiSnipsJumpBackwardTrigger="<s-k>"
+
 " Vim Indent guide: <leader>ig
 let g:indent_guides_start_level=2
 let g:indent_guides_guide_size=1
+
+
+
+" NerdTreeTabs
+map <C-t> :NERDTreeTabsToggle<CR>
+
+" NerdTreeTabs
+nmap <leader>ig :TagbarToggle<CR>
 
 " Python
 " Jedi vim specific
@@ -156,10 +171,7 @@ let g:jedi#auto_initialization = 1
 let g:jedi#show_call_signature = 0
 " Other python commands
 map <Leader>b Oimport ipdb; ipdb.set_trace()  # BREAKPOINT<C-c>
-
-
-" NerdTreeTabs
-map <C-t> :NERDTreeTabsToggle<CR>
+au FileType tex setl foldmethod=indent   " setting custom fold method for python
 
 
 " Tex9 Latex Mode
@@ -170,6 +182,12 @@ au FileType tex setl tw=0
 
 " Powerline 
 set laststatus=2
+
+" Fixing my arrow keys
+noremap <Up> k
+noremap <Down> j 
+noremap <Left> h
+noremap <Right> l 
 " ==============================================================
 "         Recipes lifted from pabulter@vt.edu
 " ==============================================================
