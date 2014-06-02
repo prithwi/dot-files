@@ -41,6 +41,7 @@ Plugin 'tpope/vim-fugitive'                " for git
 " **Python Specific**
 " Python syntax check: pip install flake8
 Plugin 'davidhalter/jedi-vim'              " Autocomplete and goto
+Plugin 'hynek/vim-python-pep8-indent'      " Python indent
 
 Plugin 'Tex-9'                             " Latex
 
@@ -122,11 +123,8 @@ set virtualedit=block                 " Let cursor move past the last char in <C
 set scrolloff=3                       " Keep 3 context lines above and below the cursor
 set omnifunc=syntaxcomplete#Complete  " Using omnifunc to search
 autocmd BufEnter * silent! lcd %:p:h  " Vim always in the directory of the buffer
-"" code folding
-"set foldmethod=indent
-"set foldlevel=2
-"set foldnestmax=4
-
+set nofoldenable
+set foldmethod=syntax
 " --------------------------------------------------------------------------
 
 " ================================================
@@ -146,6 +144,9 @@ let g:syntastic_quiet_messages = {'level': 'warnings'}
 let g:SuperTabDefaultCompletionType = "context"
 set completeopt=menuone,longest,preview
 
+" NERDcommenter
+let g:NERDSpaceDelims=1
+
 " Ultisnips
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsListSnippets="<s-tab>"
@@ -162,16 +163,17 @@ let g:indent_guides_guide_size=1
 map <C-t> :NERDTreeTabsToggle<CR>
 
 " NerdTreeTabs
-nmap <leader>ig :TagbarToggle<CR>
+nmap <leader>tg :TagbarToggle<CR>
 
 " Python
 " Jedi vim specific
 let g:jedi#popup_on_dot = 0
 let g:jedi#auto_initialization = 1
 let g:jedi#show_call_signature = 0
+au FileType python setl completeopt-=preview
 " Other python commands
 map <Leader>b Oimport ipdb; ipdb.set_trace()  # BREAKPOINT<C-c>
-au FileType tex setl foldmethod=indent   " setting custom fold method for python
+au FileType python setl foldmethod=indent   " setting custom fold method for python
 
 
 " Tex9 Latex Mode
