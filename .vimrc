@@ -22,6 +22,7 @@ Plugin 'nathanaelkane/vim-indent-guides'   " Indent guides: helpful for python
 Plugin 'altercation/vim-colors-solarized'  " for color scheme
 Plugin 'Lokaltog/vim-powerline'            " for Powerline
 Plugin 'randymorris/vim-bufstat'           " Persistent Buffer
+Plugin 'salsifis/vim-transpose'            " Transpose
 
 Plugin 'ervandew/supertab'                 " For autocomplete
 Plugin 'scrooloose/syntastic'              " for syntax checking
@@ -43,7 +44,7 @@ Plugin 'tpope/vim-fugitive'                " for git
 Plugin 'davidhalter/jedi-vim'              " Autocomplete and goto
 Plugin 'hynek/vim-python-pep8-indent'      " Python indent
 
-Plugin 'Tex-9'                             " Latex
+Plugin 'vim-scripts/Tex-9'                             " Latex
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -166,6 +167,8 @@ map <C-t> :NERDTreeTabsToggle<CR>
 nmap <leader>tg :TagbarToggle<CR>
 
 " Python
+" Syntastic specific
+let g:syntastic_python_flake8_args='--ignore=E501'  " ignoring 79 character error
 " Jedi vim specific
 let g:jedi#popup_on_dot = 0
 let g:jedi#auto_initialization = 1
@@ -177,6 +180,7 @@ au FileType python setl foldmethod=indent   " setting custom fold method for pyt
 
 
 " Tex9 Latex Mode
+let maplocalleader = ";"
 let g:tex_fold_enabled = 1
 let g:tex_comment_nospell = 1
 let g:tex_flavor = "pdflatex --shell-escape"
