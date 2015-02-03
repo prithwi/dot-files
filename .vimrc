@@ -9,6 +9,7 @@ set nocompatible
 filetype off
 
 set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/custom/
 call vundle#begin()
 
 " Let Vundle manage Vundle
@@ -63,6 +64,7 @@ set noswapfile
 set nu
 set ruler
 
+set ignorecase
 set smartcase
 set incsearch
 set hlsearch
@@ -87,6 +89,7 @@ map <c-h> <c-w>h
 
 map <f6> <c-w>w
 
+let mapleader = "," " rebind <leader> key
 " Selections
 map <Leader>a ggVG  " select all
 
@@ -98,6 +101,7 @@ set fo-=t  " don't automatically wrap text when typing
 set expandtab
 set shiftwidth=4
 set tabstop=4
+
 
 " show trailing whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -112,7 +116,6 @@ set colorcolumn=80
 highlight ColorColumn cterm=NONE ctermbg=0 ctermfg=5
 
 
-let mapleader = "," " rebind <leader> key
 
 " Markdown using inbuilt vim markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
@@ -183,7 +186,12 @@ au FileType python setl foldmethod=indent   " setting custom fold method for pyt
 let maplocalleader = ";"
 let g:tex_fold_enabled = 1
 let g:tex_comment_nospell = 1
-let g:tex_flavor = "pdflatex --shell-escape"
+let g:tex_nine_config = {
+        \'compiler': 'pdflatex',
+        \'shell_escape': 1,
+        \'viewer': {'app': 'evince', 'target': 'pdf'},
+        \'synctex': 1
+    \}
 au FileType tex setl tw=0
 
 " Powerline 
