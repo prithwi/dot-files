@@ -12,3 +12,26 @@ snippet inp "Inproceedings Reference" b
 }
 $0
 endsnippet
+
+snippet unpub "Un published" b
+@unpublished{${1:name},
+	author={${2:author}},
+	title={${3:title}},
+	note={${8:note}},
+	month={${6:MM}},
+	year={${7:YYYY}},
+}
+$0
+endsnippet
+
+snippet misc "Miscellaneous" b
+@misc{${1:name},
+	author={${2:author}},
+	title={${3:title}},
+	howpublished={${4:book}},
+	month={${6:MM}},
+	year={${7:YYYY}},
+	note={${8:note}}
+}
+$0
+endsnippet

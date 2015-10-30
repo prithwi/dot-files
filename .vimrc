@@ -7,7 +7,7 @@ autocmd! bufwritepost .vimrc source %
 " ===========================
 set nocompatible
 filetype off
-
+         
 set rtp+=~/.vim/bundle/vundle/
 set rtp+=~/.vim/custom/
 call vundle#begin()
@@ -20,7 +20,11 @@ Plugin 'gmarik/vundle'
 " Readability
 Plugin 'godlygeek/tabular'                 " Alginment: improves readability
 Plugin 'nathanaelkane/vim-indent-guides'   " Indent guides: helpful for python
-Plugin 'altercation/vim-colors-solarized'  " for color scheme
+
+" for color scheme
+Plugin 'altercation/vim-colors-solarized'  
+Plugin 'jnurmine/Zenburn'                  
+
 Plugin 'Lokaltog/vim-powerline'            " for Powerline
 Plugin 'randymorris/vim-bufstat'           " Persistent Buffer
 Plugin 'salsifis/vim-transpose'            " Transpose
@@ -43,7 +47,9 @@ Plugin 'tpope/vim-fugitive'                " for git
 " **Python Specific**
 " Python syntax check: pip install flake8
 Plugin 'davidhalter/jedi-vim'              " Autocomplete and goto
-Plugin 'hynek/vim-python-pep8-indent'      " Python indent
+Plugin 'tmhedberg/SimpylFold'                " Folding. Python. Tex.
+Plugin 'indentpython'                        " Python Indent
+" Plugin 'hynek/vim-python-pep8-indent'      " Python indent
 
 Plugin 'vim-scripts/Tex-9'                             " Latex
 
@@ -55,6 +61,10 @@ filetype plugin indent on    " required
 " General options
 " ===============
 syntax on
+
+" Splitting below and to the right
+set splitbelow
+set splitright
 
 set modeline
 set nobackup
@@ -69,7 +79,7 @@ set smartcase
 set incsearch
 set hlsearch
 
-set smartindent
+" set smartindent
 set autoindent
 
 set mouse=a
@@ -116,19 +126,19 @@ set colorcolumn=80
 highlight ColorColumn cterm=NONE ctermbg=0 ctermfg=5
 
 
-
 " Markdown using inbuilt vim markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " Other Misc.
+set backspace=indent,eol,start        " make backspace more powerful
 set hidden                            " buffer control
 set nostartofline                     " Avoid moving cursor to BOL when jumping around
 set virtualedit=block                 " Let cursor move past the last char in <C-v> mode
 set scrolloff=3                       " Keep 3 context lines above and below the cursor
 set omnifunc=syntaxcomplete#Complete  " Using omnifunc to search
 autocmd BufEnter * silent! lcd %:p:h  " Vim always in the directory of the buffer
-set nofoldenable
-set foldmethod=syntax
+" set nofoldenable
+" set foldmethod=syntax
 " --------------------------------------------------------------------------
 
 " ================================================
@@ -136,8 +146,16 @@ set foldmethod=syntax
 " ================================================
 
 " Solarizer : color configuration
-set background=dark
-colorscheme solarized
+if has('gui_running')
+    colorscheme zenburn
+else
+    set background=dark
+    colorscheme solarized
+endif
+" colorscheme zenburn
+
+" folding
+let g:SimpylFold_fold_docstring=0
 
 " Syntastic
 let g:syntastic_check_on_open=1
@@ -154,13 +172,12 @@ let g:NERDSpaceDelims=1
 " Ultisnips
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsListSnippets="<s-tab>"
-let g:UltiSnipsJumpForwardTrigger="<s-j>"
-let g:UltiSnipsJumpBackwardTrigger="<s-k>"
+let g:UltiSnipsJumpForwardTrigger="<s-c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<s-c-k>"
 
 " Vim Indent guide: <leader>ig
 let g:indent_guides_start_level=2
-let g:indent_guides_guide_size=1
-
+" let g:indent_guides_guide_size=1
 
 
 " NerdTreeTabs
@@ -171,19 +188,24 @@ nmap <leader>tg :TagbarToggle<CR>
 
 " Python
 " Syntastic specific
+let python_highlight_all=1
 let g:syntastic_python_flake8_args='--ignore=E501'  " ignoring 79 character error
 " Jedi vim specific
 let g:jedi#popup_on_dot = 0
 let g:jedi#auto_initialization = 1
-let g:jedi#show_call_signature = 0
+let g:jedi#show_call_signatures = 0
 au FileType python setl completeopt-=preview
+" Folding
+autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
+autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
 " Other python commands
 map <Leader>b Oimport ipdb; ipdb.set_trace()  # BREAKPOINT<C-c>
-au FileType python setl foldmethod=indent   " setting custom fold method for python
+" au FileType python setl foldmethod=indent   " setting custom fold method for python
 
 
 " Tex9 Latex Mode
 let maplocalleader = ";"
+let g:tex_flavor="latex"
 let g:tex_fold_enabled = 1
 let g:tex_comment_nospell = 1
 let g:tex_nine_config = {

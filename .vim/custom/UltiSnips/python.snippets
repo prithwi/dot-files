@@ -1,0 +1,61 @@
+###########################################################################
+#                          PC SNIPPETS                                    #
+###########################################################################
+
+#! author
+snippet #author "author info" b
+# Author : Prithwish Chakraborty <prithwi@vt.edu>
+# date   :
+# LICENSE:
+$0
+endsnippet
+
+# logger setup
+snippet setlog "setlog" b
+def init_logs(arg, log):
+	if arg and vars(arg).get('verbose', False):
+		l = logs.DEBUG
+	else:
+		l = logs.INFO
+	
+	# printing to stdout
+	ch = logs.StreamHandler(sys.stdout)
+	formatter = logs.Formatter('%(name)s - %(levelname)s - %(message)s')
+	ch.setFormatter(formatter)
+	log.addHandler(ch)
+	log.setLevel(l)
+	return
+$0
+endsnippet
+
+# cli
+snippet cli "cli" b
+def parse_args():
+    '''
+    Reads the command line options and parses the appropriate commands
+    '''
+    ap = argparse.ArgumentParser('program')
+    # Main options
+    ap.add_argument("-r", "--required", metavar='REQUIRED', required=True,
+	                type=str,
+					help="required param.")
+    ap.add_argument("-n", "--OPTIONAL", metavar='OPTIONAL', required=False,
+	                type=str, default=None,
+					help="optional param.")
+    # Log options
+    ap.add_argument('-v', '--verbose', action="store_true",
+                    help="Log option: Write debug messages.")
+
+    arg = ap.parse_args()
+    return arg
+
+
+def main():
+    arg = parse_args()
+	pass
+
+
+if __name__ == "__main__":
+    # TODO: check the code
+    main()
+endsnippet
