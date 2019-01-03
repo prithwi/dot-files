@@ -19,7 +19,7 @@ Plugin 'gmarik/vundle'
 " -------------
 " Readability
 Plugin 'godlygeek/tabular'                 " Alginment: improves readability
-Plugin 'nathanaelkane/vim-indent-guides'   " Indent guides: helpful for python
+Plugin 'Yggdroot/indentLine.git'           " indentation
 
 " for color scheme
 Plugin 'altercation/vim-colors-solarized'  
@@ -52,6 +52,8 @@ Plugin 'indentpython'                        " Python Indent
 " Plugin 'hynek/vim-python-pep8-indent'      " Python indent
 
 Plugin 'vim-scripts/Tex-9'                             " Latex
+" Slimux
+Plugin 'lotabout/slimux'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -83,7 +85,7 @@ set hlsearch
 set autoindent
 
 set mouse=a
-set clipboard=unnamedplus
+set clipboard=unnamed
 
 " Movement
 map <c-j> <c-w>j
@@ -126,8 +128,13 @@ set colorcolumn=80
 highlight ColorColumn cterm=NONE ctermbg=0 ctermfg=5
 
 
+" sql
+au FileType sql setl tw=0 tabstop=2 shiftwidth=2
+
 " Markdown using inbuilt vim markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+au FileType markdown setl tw=0 tabstop=2 shiftwidth=2
+
 
 " Other Misc.
 set backspace=indent,eol,start        " make backspace more powerful
@@ -136,9 +143,9 @@ set nostartofline                     " Avoid moving cursor to BOL when jumping 
 set virtualedit=block                 " Let cursor move past the last char in <C-v> mode
 set scrolloff=3                       " Keep 3 context lines above and below the cursor
 set omnifunc=syntaxcomplete#Complete  " Using omnifunc to search
-autocmd BufEnter * silent! lcd %:p:h  " Vim always in the directory of the buffer
+" autocmd BufEnter * silent! lcd %:p:h  " Vim always in the directory of the buffer
 " set nofoldenable
-" set foldmethod=syntax
+set foldmethod=syntax
 " --------------------------------------------------------------------------
 
 " ================================================
@@ -154,8 +161,12 @@ else
 endif
 " colorscheme zenburn
 
-" folding
-let g:SimpylFold_fold_docstring=0
+" indentation
+" vertical line indentation
+let g:indentLine_color_term = 239
+let g:indentLine_color_gui = '#09AA08'
+let g:indentLine_char = '│'
+let g:indentLine_fileType = ['c', 'cpp', 'python']"
 
 " Syntastic
 let g:syntastic_check_on_open=1
@@ -175,11 +186,6 @@ let g:UltiSnipsListSnippets="<s-tab>"
 let g:UltiSnipsJumpForwardTrigger="<s-c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<s-c-k>"
 
-" Vim Indent guide: <leader>ig
-let g:indent_guides_start_level=2
-" let g:indent_guides_guide_size=1
-
-
 " NerdTreeTabs
 map <C-t> :NERDTreeTabsToggle<CR>
 
@@ -194,13 +200,17 @@ let g:syntastic_python_flake8_args='--ignore=E501'  " ignoring 79 character erro
 let g:jedi#popup_on_dot = 0
 let g:jedi#auto_initialization = 1
 let g:jedi#show_call_signatures = 0
+let g:jedi#use_tabs_not_buffers = 1
 au FileType python setl completeopt-=preview
 " Folding
-autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
-autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
+let g:SimpylFold_docstring_preview = 1
+" autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
+" autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
 " Other python commands
 map <Leader>b Oimport ipdb; ipdb.set_trace()  # BREAKPOINT<C-c>
 " au FileType python setl foldmethod=indent   " setting custom fold method for python
+autocmd BufNewFile,BufReadPost *.pyx set filetype=python
+let g:ultisnips_python_style="numpy"
 
 
 " Tex9 Latex Mode
@@ -215,6 +225,7 @@ let g:tex_nine_config = {
         \'synctex': 1
     \}
 au FileType tex setl tw=0
+" noremap <buffer><silent> <LocalLeader>s :call tex_nine#InsertSkeleton(b:tex_nine_skeleton.'.pdflatex')<CR>
 
 " Powerline 
 set laststatus=2
@@ -233,3 +244,4 @@ noremap <Right> l
 "\   call SuperTabChain(&omnifunc, "<c-p>") |
 "\   call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
 "\ endif
+py3 import os; sys.executable=os.path.join(sys.prefix, 'bin/python3')
