@@ -50,10 +50,16 @@ Plugin 'davidhalter/jedi-vim'              " Autocomplete and goto
 Plugin 'tmhedberg/SimpylFold'                " Folding. Python. Tex.
 Plugin 'indentpython'                        " Python Indent
 " Plugin 'hynek/vim-python-pep8-indent'      " Python indent
+Plugin 'goerz/jupytext.vim'                  " allow opening jupyter notebook in vim
 
-Plugin 'vim-scripts/Tex-9'                             " Latex
+" Plugin 'tukss/TeX-9'                       " Latex with python 3 support
+" Plugin 'vim-scripts/Tex-9'                             " Latex
 " Slimux
 Plugin 'lotabout/slimux'
+
+" markdown
+Plugin 'tpope/vim-markdown'               " syntax highlighting, including code blocks
+Plugin 'nelstrom/vim-markdown-folding'    " for markdown folding
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -133,7 +139,10 @@ au FileType sql setl tw=0 tabstop=2 shiftwidth=2
 
 " Markdown using inbuilt vim markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-au FileType markdown setl tw=0 tabstop=2 shiftwidth=2
+au FileType markdown setl tw=0 tabstop=2 shiftwidth=2 
+au FileType markdown setl foldmethod=expr
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
+" let g:markdown_fold_style = 'nested'  " comment to view all levels
 
 
 " Other Misc.
@@ -212,6 +221,8 @@ map <Leader>b Oimport ipdb; ipdb.set_trace()  # BREAKPOINT<C-c>
 autocmd BufNewFile,BufReadPost *.pyx set filetype=python
 let g:ultisnips_python_style="numpy"
 
+" jupyter
+let g:jupytext_fmt = 'markdown'
 
 " Tex9 Latex Mode
 let maplocalleader = ";"
@@ -224,7 +235,7 @@ let g:tex_nine_config = {
         \'viewer': {'app': 'evince', 'target': 'pdf'},
         \'synctex': 1
     \}
-au FileType tex setl tw=0
+au FileType tex setl tw=0 shiftwidth=2
 " noremap <buffer><silent> <LocalLeader>s :call tex_nine#InsertSkeleton(b:tex_nine_skeleton.'.pdflatex')<CR>
 
 " Powerline 

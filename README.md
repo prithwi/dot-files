@@ -13,6 +13,7 @@ Recommended Dependencies
 
 1. ``exuberant-ctags``: For tag-view with IDE.
 2. ``pip install flake8`` : for python code check.
+3. ``pip install jupytext`` : for jupyter notebook editing in vim
 
 Gneral IDE Requirements
 ------------------------
