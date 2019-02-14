@@ -55,7 +55,7 @@ Plugin 'goerz/jupytext.vim'                  " allow opening jupyter notebook in
 " Plugin 'tukss/TeX-9'                       " Latex with python 3 support
 " Plugin 'vim-scripts/Tex-9'                             " Latex
 " Slimux
-Plugin 'lotabout/slimux'
+Plugin 'epeli/slimux'
 
 " markdown
 Plugin 'tpope/vim-markdown'               " syntax highlighting, including code blocks
@@ -127,9 +127,18 @@ autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
 map <Leader>x :%s/\s\+$
 
 " Color scheme
+" Solarizer : color configuration
+if has('gui_running')
+    colorscheme zenburn
+else
+    set background=dark
+    colorscheme solarized
+endif
+" colorscheme zenburn
+"
 set t_Co=256
-hi Search ctermbg=10
-hi SpellBad ctermbg=red
+hi Search ctermbg=white
+hi SpellBad ctermbg=red ctermfg=015
 set colorcolumn=80
 highlight ColorColumn cterm=NONE ctermbg=0 ctermfg=5
 
@@ -161,14 +170,6 @@ set foldmethod=syntax
 "          Configurations for Vundle Modules
 " ================================================
 
-" Solarizer : color configuration
-if has('gui_running')
-    colorscheme zenburn
-else
-    set background=dark
-    colorscheme solarized
-endif
-" colorscheme zenburn
 
 " indentation
 " vertical line indentation
@@ -223,6 +224,9 @@ let g:ultisnips_python_style="numpy"
 
 " jupyter
 let g:jupytext_fmt = 'markdown'
+" slimux
+map <C-c><C-c> :SlimuxREPLSendLine<CR>
+vmap <C-c><C-c> :SlimuxREPLSendSelection<CR>
 
 " Tex9 Latex Mode
 let maplocalleader = ";"
@@ -235,7 +239,7 @@ let g:tex_nine_config = {
         \'viewer': {'app': 'evince', 'target': 'pdf'},
         \'synctex': 1
     \}
-au FileType tex setl tw=0 shiftwidth=2
+au FileType tex setl tw=0 shiftwidth=2 spell
 " noremap <buffer><silent> <LocalLeader>s :call tex_nine#InsertSkeleton(b:tex_nine_skeleton.'.pdflatex')<CR>
 
 " Powerline 
