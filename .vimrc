@@ -23,6 +23,7 @@ Plugin 'Yggdroot/indentLine.git'           " indentation
 
 " for color scheme
 Plugin 'altercation/vim-colors-solarized'  
+Plugin 'joshdick/onedark.vim'
 Plugin 'jnurmine/Zenburn'                  
 
 Plugin 'Lokaltog/vim-powerline'            " for Powerline
@@ -60,6 +61,9 @@ Plugin 'epeli/slimux'
 " markdown
 Plugin 'tpope/vim-markdown'               " syntax highlighting, including code blocks
 Plugin 'nelstrom/vim-markdown-folding'    " for markdown folding
+
+" vim autoreload
+Plugin 'djoshea/vim-autoread'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -132,7 +136,8 @@ if has('gui_running')
     colorscheme zenburn
 else
     set background=dark
-    colorscheme solarized
+    " colorscheme solarized
+    colorscheme onedark
 endif
 " colorscheme zenburn
 "
@@ -205,7 +210,8 @@ nmap <leader>tg :TagbarToggle<CR>
 " Python
 " Syntastic specific
 let python_highlight_all=1
-let g:syntastic_python_flake8_args='--ignore=E501'  " ignoring 79 character error
+" let g:syntastic_python_flake8_args='--ignore=E501,E111'  " ignoring 79 character error
+let g:syntastic_python_flake8_args='--ignore=E501,E111,F401,E741'  " + unused imports, ambiguous variable names
 " Jedi vim specific
 let g:jedi#popup_on_dot = 0
 let g:jedi#auto_initialization = 1
