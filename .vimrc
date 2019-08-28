@@ -64,6 +64,7 @@ Plugin 'nelstrom/vim-markdown-folding'    " for markdown folding
 
 " vim autoreload
 Plugin 'djoshea/vim-autoread'
+Plugin 'rhysd/vim-grammarous'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -211,7 +212,7 @@ nmap <leader>tg :TagbarToggle<CR>
 " Syntastic specific
 let python_highlight_all=1
 " let g:syntastic_python_flake8_args='--ignore=E501,E111'  " ignoring 79 character error
-let g:syntastic_python_flake8_args='--ignore=E501,E111,F401,E741'  " + unused imports, ambiguous variable names
+let g:syntastic_python_flake8_args='--ignore=E501,E111,F401,E741,E265,E225,E251,E231,E261,E262,E241'  " + unused imports, ambiguous variable names, spaces after hash, spaces around ops
 " Jedi vim specific
 let g:jedi#popup_on_dot = 0
 let g:jedi#auto_initialization = 1
@@ -232,8 +233,8 @@ let g:ultisnips_python_style="numpy"
 let g:jupytext_fmt = 'markdown'
 " slimux
 map <C-c><C-c> :SlimuxREPLSendLine<CR>
-vmap <C-c><C-c> :SlimuxREPLSendSelection<CR>
-
+" vmap <C-c><C-c> :SlimuxREPLSendSelection<CR>
+vnoremap <C-c><C-c> :<C-w>SlimuxShellRun %cpaste<CR>:'<,'>SlimuxREPLSendSelection<CR>:SlimuxShellRun --<CR>
 " Tex9 Latex Mode
 let maplocalleader = ";"
 let g:tex_flavor="latex"
