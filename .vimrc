@@ -56,7 +56,8 @@ Plugin 'goerz/jupytext.vim'                  " allow opening jupyter notebook in
 " Plugin 'tukss/TeX-9'                       " Latex with python 3 support
 " Plugin 'vim-scripts/Tex-9'                             " Latex
 " Slimux
-Plugin 'epeli/slimux'
+" Plugin 'epeli/slimux'
+Plugin 'smcabrera/slimux'
 
 " markdown
 Plugin 'tpope/vim-markdown'               " syntax highlighting, including code blocks
@@ -266,4 +267,4 @@ noremap <Right> l
 "\   call SuperTabChain(&omnifunc, "<c-p>") |
 "\   call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
 "\ endif
-py3 import os; sys.executable=os.path.join(sys.prefix, 'bin/python3')
+" py3 import os; sys.executable=os.path.join(sys.prefix, 'bin/python3')
