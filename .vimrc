@@ -141,7 +141,7 @@ else
     " colorscheme solarized
     colorscheme onedark
 endif
-" colorscheme zenburn
+colorscheme slate
 "
 set t_Co=256
 hi Search ctermbg=white
