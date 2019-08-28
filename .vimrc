@@ -57,7 +57,7 @@ Plugin 'goerz/jupytext.vim'                  " allow opening jupyter notebook in
 " Plugin 'vim-scripts/Tex-9'                             " Latex
 " Slimux
 " Plugin 'epeli/slimux'
-Plugin 'smcabrera/slimux'
+Plugin 'benhamingorman/slimux'
 
 " markdown
 Plugin 'tpope/vim-markdown'               " syntax highlighting, including code blocks
