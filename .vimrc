@@ -22,12 +22,12 @@ Plugin 'godlygeek/tabular'                 " Alginment: improves readability
 Plugin 'Yggdroot/indentLine.git'           " indentation
 
 " for color scheme
-Plugin 'altercation/vim-colors-solarized'  
+" Plugin 'altercation/vim-colors-solarized'  
 Plugin 'joshdick/onedark.vim'
-Plugin 'jnurmine/Zenburn'                  
+" Plugin 'jnurmine/Zenburn'                  
 
 Plugin 'Lokaltog/vim-powerline'            " for Powerline
-Plugin 'randymorris/vim-bufstat'           " Persistent Buffer
+" Plugin 'randymorris/vim-bufstat'           " Persistent Buffer
 Plugin 'salsifis/vim-transpose'            " Transpose
 
 Plugin 'ervandew/supertab'                 " For autocomplete
@@ -63,7 +63,7 @@ Plugin 'tpope/vim-markdown'               " syntax highlighting, including code 
 Plugin 'nelstrom/vim-markdown-folding'    " for markdown folding
 
 " vim autoreload
-Plugin 'djoshea/vim-autoread'
+" Plugin 'djoshea/vim-autoread'
 Plugin 'rhysd/vim-grammarous'
 
 " All of your Plugins must be added before the following line
