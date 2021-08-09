@@ -1,0 +1,12 @@
+*.git*
+*.egg-info
+*.ipynb_checkpoints
+*.pyc
+*__pycache__
+*.Rhistory
+*.DS_Store
+*tags
+*logs
+*results*
+*mlruns*
+*out*

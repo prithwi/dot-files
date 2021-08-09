@@ -155,6 +155,7 @@ au FileType sql setl tw=0 tabstop=2 shiftwidth=2
 " Markdown using inbuilt vim markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 au FileType markdown setl tw=0 tabstop=2 shiftwidth=2 
+au FileType markdown setl wrap linebreak showbreak=++ 
 au FileType markdown setl foldmethod=expr
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
 " let g:markdown_fold_style = 'nested'  " comment to view all levels
@@ -212,7 +213,7 @@ nmap <leader>tg :TagbarToggle<CR>
 " Syntastic specific
 let python_highlight_all=1
 " let g:syntastic_python_flake8_args='--ignore=E501,E111'  " ignoring 79 character error
-let g:syntastic_python_flake8_args='--ignore=E501,E111,F401,E741,E265,E225,E251,E231,E261,E262,E241'  " + unused imports, ambiguous variable names, spaces after hash, spaces around ops
+let g:syntastic_python_flake8_args='--ignore=E124,E402,E501,E111,F401,E741,E265,E225,E251,E231,E261,E262,E241,E126'  " + unused imports, ambiguous variable names, spaces after hash, spaces around ops
 " Jedi vim specific
 let g:jedi#popup_on_dot = 0
 let g:jedi#auto_initialization = 1
@@ -231,6 +232,8 @@ let g:ultisnips_python_style="numpy"
 
 " jupyter
 let g:jupytext_fmt = 'markdown'
+autocmd BufNewFile,BufReadPost *.ipynb setfiletype python.markdown
+
 " slimux
 map <C-c><C-c> :SlimuxREPLSendLine<CR>
 " vmap <C-c><C-c> :SlimuxREPLSendSelection<CR>
@@ -246,7 +249,7 @@ let g:tex_nine_config = {
         \'viewer': {'app': 'evince', 'target': 'pdf'},
         \'synctex': 1
     \}
-au FileType tex setl tw=0 shiftwidth=2 spell
+au FileType tex setl tw=0 shiftwidth=2 spell wrap linebreak nolist showbreak=++
 " noremap <buffer><silent> <LocalLeader>s :call tex_nine#InsertSkeleton(b:tex_nine_skeleton.'.pdflatex')<CR>
 
 " Powerline 
@@ -257,6 +260,16 @@ noremap <Up> k
 noremap <Down> j 
 noremap <Left> h
 noremap <Right> l 
+
+
+vnoremap j gj
+vnoremap k gk
+vnoremap 4 g$
+vnoremap 6 g^
+nnoremap j gj
+nnoremap k gk
+nnoremap 4 g$
+nnoremap 6 g^
 " ==============================================================
 "         Recipes lifted from pabulter@vt.edu
 " ==============================================================

@@ -131,3 +131,8 @@ By default uses pdflatex. To use latex/rubber set g:tex_flavor =
         <LocalLeader>Q                      View the quickfix window
         <LocalLeader>U                      Update the BibTeX database(s)
 
+Other Goodies
+=============
+
+* copy `.inputrc` to `$HOME` for reverse search using up/down
+* copy `rsync.excludes` to `$HOME/.config` for easy access to simple file filtering to be used with `rsync`
