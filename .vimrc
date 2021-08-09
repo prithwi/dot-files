@@ -24,9 +24,12 @@ Plugin 'Yggdroot/indentLine.git'           " indentation
 " for color scheme
 " Plugin 'altercation/vim-colors-solarized'  
 Plugin 'joshdick/onedark.vim'
+Plugin 'arcticicestudio/nord-vim'
 " Plugin 'jnurmine/Zenburn'                  
 
-Plugin 'Lokaltog/vim-powerline'            " for Powerline
+" Plugin 'Lokaltog/vim-powerline'            " for Powerline
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 " Plugin 'randymorris/vim-bufstat'           " Persistent Buffer
 Plugin 'salsifis/vim-transpose'            " Transpose
 
@@ -34,7 +37,10 @@ Plugin 'ervandew/supertab'                 " For autocomplete
 Plugin 'scrooloose/syntastic'              " for syntax checking
 Plugin 'majutsushi/tagbar'                 " source code browser
 
-Plugin 'SirVer/ultisnips'                  " Snippets 
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+" Plugin 'SirVer/ultisnips'                  " Snippets 
 Plugin 'honza/vim-snippets'                " Snippets collection
 
 Plugin 'kien/ctrlp.vim'                    " Fuzzy Buffer search
@@ -138,12 +144,15 @@ if has('gui_running')
 else
     set background=dark
     " colorscheme solarized
-    colorscheme onedark
+    " colorscheme onedark
+    colorscheme nord
 endif
 " colorscheme zenburn
 "
 set t_Co=256
 hi Search ctermbg=white
+hi visual term=reverse cterm=reverse guibg=grey40
+hi CursorColumn term=reverse cterm=reverse guibg=grey10
 hi SpellBad ctermbg=red ctermfg=015
 set colorcolumn=80
 highlight ColorColumn cterm=NONE ctermbg=0 ctermfg=5
@@ -169,7 +178,7 @@ set virtualedit=block                 " Let cursor move past the last char in <C
 set scrolloff=3                       " Keep 3 context lines above and below the cursor
 set omnifunc=syntaxcomplete#Complete  " Using omnifunc to search
 " autocmd BufEnter * silent! lcd %:p:h  " Vim always in the directory of the buffer
-" set nofoldenable
+set nofoldenable
 set foldmethod=syntax
 " --------------------------------------------------------------------------
 
@@ -198,10 +207,10 @@ set completeopt=menuone,longest,preview
 let g:NERDSpaceDelims=1
 
 " Ultisnips
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsListSnippets="<s-tab>"
-let g:UltiSnipsJumpForwardTrigger="<s-c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<s-c-k>"
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsListSnippets="<s-tab>"
+" let g:UltiSnipsJumpForwardTrigger="<s-c-j>"
+" let g:UltiSnipsJumpBackwardTrigger="<s-c-k>"
 
 " NerdTreeTabs
 map <C-t> :NERDTreeTabsToggle<CR>
@@ -213,7 +222,7 @@ nmap <leader>tg :TagbarToggle<CR>
 " Syntastic specific
 let python_highlight_all=1
 " let g:syntastic_python_flake8_args='--ignore=E501,E111'  " ignoring 79 character error
-let g:syntastic_python_flake8_args='--ignore=E124,E402,E501,E111,F401,E741,E265,E225,E251,E231,E261,E262,E241,E126'  " + unused imports, ambiguous variable names, spaces after hash, spaces around ops
+let g:syntastic_python_flake8_args='--ignore=E501,E111,F401,E741,E265,E225,E251,E231,E261,E262,E241,E402,E252'  " + unused imports, ambiguous variable names, spaces after hash, spaces around ops
 " Jedi vim specific
 let g:jedi#popup_on_dot = 0
 let g:jedi#auto_initialization = 1
@@ -254,7 +263,11 @@ au FileType tex setl tw=0 shiftwidth=2 spell wrap linebreak nolist showbreak=++
 
 " Powerline 
 set laststatus=2
-
+" let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='luna'
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
+let g:airline#extensions#tabline#show_tabs = 1
 " Fixing my arrow keys
 noremap <Up> k
 noremap <Down> j 
