@@ -22,10 +22,9 @@ Plugin 'godlygeek/tabular'                 " Alginment: improves readability
 Plugin 'Yggdroot/indentLine.git'           " indentation
 
 " for color scheme
-" Plugin 'altercation/vim-colors-solarized'  
+Plugin 'altercation/vim-colors-solarized'  
 Plugin 'joshdick/onedark.vim'
-Plugin 'arcticicestudio/nord-vim'
-" Plugin 'jnurmine/Zenburn'                  
+Plugin 'jnurmine/Zenburn'                  
 
 " Plugin 'Lokaltog/vim-powerline'            " for Powerline
 Plugin 'vim-airline/vim-airline'
@@ -149,6 +148,7 @@ else
 endif
 " colorscheme zenburn
 "
+" colorscheme nord
 set t_Co=256
 hi Search ctermbg=white
 hi visual term=reverse cterm=reverse guibg=grey40
@@ -207,10 +207,10 @@ set completeopt=menuone,longest,preview
 let g:NERDSpaceDelims=1
 
 " Ultisnips
-" let g:UltiSnipsExpandTrigger="<tab>"
-" let g:UltiSnipsListSnippets="<s-tab>"
-" let g:UltiSnipsJumpForwardTrigger="<s-c-j>"
-" let g:UltiSnipsJumpBackwardTrigger="<s-c-k>"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsListSnippets="<s-tab>"
+let g:UltiSnipsJumpForwardTrigger="<s-c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<s-c-k>"
 
 " NerdTreeTabs
 map <C-t> :NERDTreeTabsToggle<CR>
@@ -269,11 +269,16 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
 let g:airline#extensions#tabline#show_tabs = 1
 " Fixing my arrow keys
-noremap <Up> k
-noremap <Down> j 
-noremap <Left> h
-noremap <Right> l 
-
+" noremap <Up> k
+" noremap <Down> j 
+" noremap <Left> h
+" noremap <Right> l 
+nnoremap <Down> gj
+nnoremap <Up> gk
+vnoremap <Down> gj
+vnoremap <Up> gk
+inoremap <Down> <C-o>gj
+inoremap <Up> <C-o>gk
 
 vnoremap j gj
 vnoremap k gk
