@@ -144,9 +144,9 @@ else
     set background=dark
     " colorscheme solarized
     " colorscheme onedark
-    colorscheme nord
+    colorscheme zenburn
 endif
-" colorscheme zenburn
+colorscheme zenburn
 "
 " colorscheme nord
 set t_Co=256
